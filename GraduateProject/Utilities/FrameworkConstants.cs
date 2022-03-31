@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GraduateProject.Utilities
+namespace GraduationProject.Utilities
 {
     public class FrameworkConstants
     {

@@ -1,12 +1,12 @@
-﻿using GraduateProject.Pages;
-using GraduateProject.Utilities;
+﻿using GraduationProject.Pages;
+using GraduationProject.Utilities;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 
-namespace GraduateProject.Tests
+namespace GraduationProject.Tests
 {
     class NavigationTests : BaseTest
     {
@@ -35,8 +35,9 @@ namespace GraduateProject.Tests
             Assert.IsTrue(nav.CheckAdultsHelmetsLabel("CASTI ADULTI"));
             nav.HelmetsKidsMenu();
             Assert.IsTrue(nav.CheckKidsHelmetsLabel("CASTI COPII"));
-            nav.GiftsMenu();
-            Assert.IsTrue(nav.CheckGiftsPageLabel("IDEI DE CADOU"));
+            // Menu deactivate until next winter :)
+            //nav.GiftsMenu();
+            //Assert.IsTrue(nav.CheckGiftsPageLabel("IDEI DE CADOU"));
         }
     }
 }

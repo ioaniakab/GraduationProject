@@ -3,10 +3,10 @@ using AventStack.ExtentReports.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using GraduateProject.Utilities;
-using GraduateProject.Pages;
+using GraduationProject.Utilities;
+using GraduationProject.Pages;
 
-namespace GraduateProject.Tests
+namespace GraduationProject.Tests
 {
     class MainPageTests : BaseTest
     {

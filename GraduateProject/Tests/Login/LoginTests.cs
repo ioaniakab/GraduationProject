@@ -1,11 +1,11 @@
-﻿using GraduateProject.Pages;
-using GraduateProject.Utilities;
+﻿using GraduationProject.Pages;
+using GraduationProject.Utilities;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace GraduateProject.Tests
+namespace GraduationProject.Tests
 {
     class LoginTests : BaseTest
     {
@@ -14,6 +14,13 @@ namespace GraduateProject.Tests
         private static IEnumerable<TestCaseData> GetCredentialsDataCsv()
         {
             foreach (var values in Utils.GetGenericData("TestData\\logincredentials.csv"))
+            {
+                yield return new TestCaseData(values);
+            }
+        }
+        private static IEnumerable<TestCaseData> GetRecoverCredentialsDataCsv()
+        {
+            foreach (var values in Utils.GetGenericData("TestData\\recovercredentials.csv"))
             {
                 yield return new TestCaseData(values);
             }
@@ -50,7 +57,7 @@ namespace GraduateProject.Tests
             MainPage mp = new MainPage(_driver);
             mp.CookieAccept();
             LoginPage lp = new LoginPage(_driver);
-            lp.Login("email@email.com", "asd123");
+            lp.Login("test1@email.com", "asd123");
             lp.Logout();
         }
         
@@ -64,13 +71,11 @@ namespace GraduateProject.Tests
             MainPage mp = new MainPage(_driver);
             mp.CookieAccept();
             LoginPage lp = new LoginPage(_driver);
-            lp.Login("email@email.com", "asd123");
+            lp.Login("test1@email.com", "asd123");
         }
-
-        [Category("PasswordRecovery")]
-        //[Test, TestCaseSource("GetCredentialsDataCsv"), Order(3)]
-        [Test, Order (3)]
-        public void PasswordREcoveryTest()
+        [Category("Recover Password")]
+        [Test, TestCaseSource("GetRecoverCredentialsDataCsv"), Order(5)]
+        public void RecoverPassword(string email, string errMsg)
         {
             String testName = TestContext.CurrentContext.Test.Name;
             _test = _extent.CreateTest(testName);
@@ -78,13 +83,13 @@ namespace GraduateProject.Tests
             MainPage mp = new MainPage(_driver);
             mp.CookieAccept();
             LoginPage lp = new LoginPage(_driver);
-            lp.PasswordRecovery("email","err");
-            
-            /*lp.PasswordRecovery("abc", "err");
-            Console.WriteLine("{0}",lp.ErrorRecoveryPassword());
-            //Assert.AreEqual(passRecoveryErr, lp.ErrorRecoveryPassword());
-            */
+            lp.RecoverPassword(email);
+
+            if (errMsg != "")
+            {
+                Assert.AreEqual(errMsg, lp.RecoverEmailErrorCheck());
+            }
         }
-        
+
     }
 }

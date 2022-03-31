@@ -1,19 +1,19 @@
-﻿using GraduateProject.Pages;
-using GraduateProject.Utilities;
+﻿using GraduationProject.Pages;
+using GraduationProject.Utilities;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 
-namespace GraduateProject.Tests
+namespace GraduationProject.Tests
 {
     class AddRemoveProductsToCartTests : BaseTest
     {
         string url = FrameworkConstants.GetUrl();
         [Category ("Add To Cart")]
         [Test, Order(1)]
-        public void AccountAddTest()
+        public void AccountAddToCartTest()
         {
             String testName = TestContext.CurrentContext.Test.FullName;
             _test = _extent.CreateTest(testName);
@@ -22,7 +22,7 @@ namespace GraduateProject.Tests
             qacc.CookieAccept();
             
             LoginPage lp = new LoginPage(_driver);
-            lp.Login("email@email.com", "asd123");
+            lp.Login("test1@email.com", "asd123");
                                    
             Navigation nav = new Navigation(_driver);
             nav.BikesMenu();
@@ -33,7 +33,8 @@ namespace GraduateProject.Tests
 
             nav.GlovesMenu();
             sp.SearchProduct(14);
-            sp.IncreaseQuantity(2);
+            sp.IncreaseQuantity(3);
+            sp.DecreaseQuantity(2);
             sp.AddToCart();
 
             nav.HelmetsMenu();
@@ -41,13 +42,18 @@ namespace GraduateProject.Tests
             sp.SearchProduct(11);
             sp.AddToCart();
 
-            nav.GiftsMenu();
+            nav.HelmetsKidsMenu();
             sp.SearchProduct(7);
-            sp.IncreaseQuantity(1);
+            sp.IncreaseQuantity(2);
+            sp.AddToCart();
+
+            nav.AccesoriesMenu();
+            sp.SearchProduct(7);
+            sp.IncreaseQuantity(2);
             sp.AddToCart();
         }
 
-        [Category("Add To Cart")]
+        [Category("Cart Tests")]
         [Test, Order(2)]
         public void AccountEmptyCartTest()
         {
@@ -58,7 +64,7 @@ namespace GraduateProject.Tests
             qacc.CookieAccept();
 
             LoginPage lp = new LoginPage(_driver);
-            lp.Login("email@email.com", "asd123");
+            lp.Login("test1@email.com", "asd123");
 
             Navigation nav = new Navigation(_driver);
             nav.GoToCart();
@@ -67,7 +73,7 @@ namespace GraduateProject.Tests
             sp.RemoveAllProducts();
            
         }
-        [Category("Add To Cart")]
+        [Category("Cart Tests")]
         [Test, Order(3)]
         public void AccountRemoveAProductTest()
         {
@@ -78,16 +84,16 @@ namespace GraduateProject.Tests
             qacc.CookieAccept();
 
             LoginPage lp = new LoginPage(_driver);
-            lp.Login("email@email.com", "asd123");
+            lp.Login("test1@email.com", "asd123");
 
             Navigation nav = new Navigation(_driver);
             nav.GoToCart();
 
             SearchPages sp = new SearchPages(_driver);
-            sp.RemoveAProduct(2);
+            sp.RemoveAProduct(0);
         }
 
-        [Category("Add To Cart")]
+        [Category("Cart Tests")]
         [Test, Order(4)]
         public void AddCartNOAccountTest()
         {

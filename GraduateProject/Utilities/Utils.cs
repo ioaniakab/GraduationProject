@@ -13,7 +13,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 
-namespace GraduateProject
+namespace GraduationProject
 {
     public class Utils
     {

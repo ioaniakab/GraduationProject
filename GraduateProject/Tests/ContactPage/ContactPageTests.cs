@@ -1,11 +1,11 @@
-﻿using GraduateProject.Pages;
-using GraduateProject.Utilities;
+﻿using GraduationProject.Pages;
+using GraduationProject.Utilities;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace GraduateProject.Tests
+namespace GraduationProject.Tests
 {
     class ContactPageTests : BaseTest
     {
@@ -18,8 +18,8 @@ namespace GraduateProject.Tests
             }
         }
 
-        [Category("Registration")]
-        [Test, TestCaseSource("GetCredentialsDataCsv")]
+        [Category("Contact Page")]
+        [Test, TestCaseSource("GetCredentialsDataCsv"), Order(1)]
         public void ContactPageTest(string email, string name, string phone, string message, string eula, 
             string errmsg, string emailerr, string nameerr,string phoneerr, string msgboxerr)
         {
@@ -55,6 +55,20 @@ namespace GraduateProject.Tests
             {
                 Assert.AreEqual("Mesajul este obligatoriu.", cp.ErrorMessageBoxCheck());
             }
+        }
+
+        [Category("Contact Page")]
+        [Test, Order(2)]
+        public void MapLocation()
+        {
+            String testName = TestContext.CurrentContext.Test.FullName;
+            _test = _extent.CreateTest(testName);
+            _driver.Navigate().GoToUrl(url + contactPath);
+            MainPage qacc = new MainPage(_driver);
+            qacc.CookieAccept();
+
+            ContactPage cp = new ContactPage(_driver);
+            cp.MapLocation();
         }
     }
 }

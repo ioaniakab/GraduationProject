@@ -1,10 +1,10 @@
-﻿using GraduateProject.Pages;
+﻿using GraduationProject.Pages;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace GraduateProject.Pages
+namespace GraduationProject.Pages
 {
     class MainPage : BasePage
     {

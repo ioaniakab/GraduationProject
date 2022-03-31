@@ -1,11 +1,11 @@
-﻿using GraduateProject.Pages;
-using GraduateProject.Utilities;
+﻿using GraduationProject.Pages;
+using GraduationProject.Utilities;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace GraduateProject.Tests
+namespace GraduationProject.Tests
 {
     class RegistrationTests : BaseTest
     {

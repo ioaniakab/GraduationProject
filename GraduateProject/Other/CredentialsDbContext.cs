@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace GraduateProject.Other
+namespace GraduationProject.Other
 {
     class CredentialsDbContext : DbContext
     {

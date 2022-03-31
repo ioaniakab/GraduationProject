@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 
-namespace GraduateProject.Pages
+namespace GraduationProject.Pages
 {
     class Navigation : BasePage
     {
@@ -109,7 +109,7 @@ namespace GraduateProject.Pages
             actions.MoveToElement(hoverButton).Build().Perform();
             driver.FindElement(By.CssSelector(kidsHelemtsSelector)).Click();
         }
-
+        // Christmas gifts menu deactivated until winter :)
         public void GiftsMenu()
         {
             var giftsElement = driver.FindElement(By.CssSelector(giftsSelector));

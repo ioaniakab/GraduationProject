@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace GraduateProject.Pages
+namespace GraduationProject.Pages
 {
     class RegistrationPage : BasePage
     {

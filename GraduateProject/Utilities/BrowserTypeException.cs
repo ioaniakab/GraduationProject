@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace GraduateProject.Utilities
+namespace GraduationProject.Utilities
 {
     [Serializable]
     internal class BrowserTypeException : Exception

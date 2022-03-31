@@ -1,7 +1,7 @@
 ﻿using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
 using NUnit.Framework;
-using GraduateProject.Utilities;
+using GraduationProject.Utilities;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
@@ -11,7 +11,7 @@ using System.IO;
 using System.Text;
 using System.Threading;
 
-namespace GraduateProject.Tests
+namespace GraduationProject.Tests
 {
     class BaseTest
     {

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace GraduateProject.Pages
+namespace GraduationProject.Pages
 {
     class SearchPages : BasePage
     {
@@ -15,8 +15,7 @@ namespace GraduateProject.Pages
         const string pageNumberSelector = "buttonPag"; // class
         const string removeProductSelector = "remove"; // class
         const string removeProductsSelector = "-g-checkout-item-remove"; // class
-        const string outOfStockSelector = "//*[@id='product-page']/div[1]/div/div[2]/div/div[2]/a"; // xpath
-
+        
 
         public SearchPages(IWebDriver driver) : base(driver)
         {
@@ -27,8 +26,6 @@ namespace GraduateProject.Pages
         {
             var countProductsOnPage = driver.FindElements(By.ClassName(addToCartSelectorClass));
             var productsOnPage = countProductsOnPage[productIndex];
-            //Console.Write(countProductsOnPage.Count);
-            //Console.WriteLine("products on page {0}", productsOnPage);
             productsOnPage.Click();
         }
 
@@ -36,8 +33,6 @@ namespace GraduateProject.Pages
         {
             var countPages = driver.FindElements(By.ClassName(pageNumberSelector));
             var numberOfPages = countPages[pageIndex];
-            //Console.Write(countPages.Count);
-            //Console.WriteLine("pages {0}", numberOfPages);
             numberOfPages.Click();
         }
 
@@ -80,20 +75,33 @@ namespace GraduateProject.Pages
             Console.Write(countProdInCartElement.Count);
             removeProductElement.Click();
         }
+               
         public void RemoveAllProducts()
         {
-            var countProdInCartElement = driver.FindElements(By.ClassName(removeProductSelector));
-            //var elements = countProdInCartElement.Count;
-            //Console.Write(countProdInCartElement.Count);
-            //Console.WriteLine("Numarul de produse din cos este {0}", elements);
-            
-            foreach (var item in countProdInCartElement)
+
+            var countProductsOnPage = driver.FindElements(By.ClassName(removeProductsSelector)).Count;
+            int[] prodInCart = new int[] { countProductsOnPage };
+            Console.Write(countProductsOnPage);
+
+
+            /*foreach (int val in prodInCart)
             {
-                //Utils.WaitForElementClickable(driver, 2, By.ClassName(removeProductsSelector)).Click();
-                //var removeProductElement = Utils.WaitForFluentElement(driver, 2, By.ClassName(removeProductsSelector));
-                //removeProductElement.Click();
-                item.Click();
+                driver.FindElement(By.ClassName(removeProductsSelector)).Click();
+            }*/
+            /*
+            for (int i = 0; i < prodInCart; i++)
+            {
+                //driver.FindElement(By.ClassName(removeProductsSelector)).Click();
+                Console.Write(countProductsOnPage);
             }
+            //return countProductsOnPage; 
+            */
+           
+            for (int i = 0; i <= countProductsOnPage; i++)
+            {
+            driver.FindElement(By.ClassName(removeProductSelector)).Click();
+            }
+            
         }
 
     }

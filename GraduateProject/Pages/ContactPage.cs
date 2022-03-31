@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace GraduateProject.Pages
+namespace GraduationProject.Pages
 {
     class ContactPage : BasePage
     {
@@ -19,6 +19,7 @@ namespace GraduateProject.Pages
         const string nameErrorSelector = "#-g-contact-form > div:nth-child(3) > span"; // css
         const string phoneErrorSelector = "#-g-contact-form > div:nth-child(4) > span"; // css
         const string messageBoxErrorSelector = "#-g-contact-form > div.c-row.textarea > span"; // css
+        const string iframeSelector = "iframe"; // tag
 
         public Boolean CheckContactPageLabel(string label)
         {
@@ -54,7 +55,11 @@ namespace GraduateProject.Pages
 
             driver.FindElement(By.Id(sendMessageSelector)).Click();
         }
-
+        public void MapLocation()
+        {
+        var iframeElement = driver.FindElement(By.TagName(iframeSelector));
+        driver.SwitchTo().Frame(iframeElement);
+        }
         public string ErrorMessageCheck()
         {
             return driver.FindElement(By.CssSelector(errorMessageSelector)).Text;
